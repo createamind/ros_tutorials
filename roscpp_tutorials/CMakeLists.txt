@@ -14,14 +14,14 @@ catkin_package(CATKIN_DEPENDS message_runtime std_msgs)
 
 macro(rostutorial T)
   add_executable(${T} ${T}/${T}.cpp)
-  target_link_libraries(${T} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
+  target_link_libraries(${T} ${catkin_LIBRARIES} /home/sdc/catkin_ws/src/ros_tutorials/roscpp_tutorials/vehicle/libcontrolcan.so ${Boost_LIBRARIES})
   add_dependencies(${T} roscpp_tutorials_gencpp)
   install(TARGETS ${T}
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 endmacro()
 
 foreach(dir
-    listener
+    vehicle
     notify_connect
     talker
     babbler
@@ -29,14 +29,6 @@ foreach(dir
     add_two_ints_server
     add_two_ints_server_class
     anonymous_listener
-    listener_with_userdata
-    listener_multiple
-    listener_threaded_spin
-    listener_async_spin
-    # listener_single_message
-    listener_with_tracked_object
-    listener_unreliable
-    listener_class
     node_handle_namespaces
     custom_callback_processing
     timers
